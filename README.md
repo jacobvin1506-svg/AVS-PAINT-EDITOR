@@ -1,30 +1,31 @@
 # 🎨 AVS Paint Editor (Unofficial)
 
-AVS Paint Editor (Unofficial) es un proyecto experimental creado en **Batch (.bat)** para Windows.  
-Funciona como un “Paint” básico **desde la consola**, usando dibujo ASCII y menús interactivos.
+AVS Paint Editor (Unofficial) is an experimental project created as a **Batch (.bat)** application for Windows.
 
-Este proyecto es **educativo**, ligero y no requiere instalación.
+It functions as a basic "Paint" program **from the command line**, using ASCII art and interactive menus.
 
----
-
-## ✨ Características
-
-- Menú interactivo en consola (CMD)
-- Cambio de colores de la terminal
-- Dibujo en formato ASCII
-- Guardado del dibujo en archivo `.txt`
-- Script ultra liviano
-- Compatible con cualquier versión de Windows
+This project is **educational**, lightweight, and requires no installation.
 
 ---
 
-## 📦 Requisitos
+## ✨ Features
+
+- Interactive menu in the command line (CMD)
+- Terminal color customization
+- ASCII art style drawing
+- Saving the artwork to a `.txt` file
+- Ultra-lightweight script
+- Compatible with any version of Windows
+
+---
+
+## 📦 Requirements
 
 - Windows
-- CMD (Símbolo del sistema)
-- No necesita dependencias externas
+- CMD (Command Prompt)
+- No external dependencies required
 
-## WARING
+## WARNING
 
 This project is UNOFFICIAL and was created solely for educational and experimental purposes.
 
@@ -38,5 +39,21 @@ The author is not responsible for any third-party use of the software.
 
 If you own a trademark mentioned and believe this project infringes on any rights, please open an issue so we can discuss and resolve it amicably.
 
+##License and Usage
 
-  
+AVS Paint Editor (Unofficial) is free for everyone.
+
+Free to use
+
+No payments
+
+No subscriptions
+
+✅Includes an activation code
+
+❌ No purchase required
+
+❌ No hidden costs
+
+The activation code is symbolic / educational only and does not require payment.
+It is used to simulate an activation system or for learning purposes.

@@ -1,38 +1,33 @@
-🎨 AVS Paint Editor (Unofficial)
+# 🎨 AVS Paint Editor (Unofficial)
 
-AVS Paint Editor (Unofficial) is an experimental batch editor (.bat) for Windows, inspired by the classic Paint program but running from the command line.
+AVS Paint Editor (Unofficial) es un proyecto experimental creado en **Batch (.bat)** para Windows.  
+Funciona como un “Paint” básico **desde la consola**, usando dibujo ASCII y menús interactivos.
 
-This project is educational and recreational, focused on learning automation with .bat files, interactive menus, and basic use of colors and text files.
+Este proyecto es **educativo**, ligero y no requiere instalación.
 
-✨ Features
+---
 
-Interactive console menu
+## ✨ Características
 
-Terminal color change
+- Menú interactivo en consola (CMD)
+- Cambio de colores de la terminal
+- Dibujo en formato ASCII
+- Guardado del dibujo en archivo `.txt`
+- Script ultra liviano
+- Compatible con cualquier versión de Windows
 
-ASCII drawing format
+---
 
-Save drawings to a .txt file
+## 📦 Requisitos
 
-Lightweight script, no dependencies
+- Windows
+- CMD (Símbolo del sistema)
+- No necesita dependencias externas
 
-Works on any Windows version
+---
 
-🧠 Limitations
+## ▶️ Uso
 
-No graphical interface
-
-Does not use a mouse
-
-Does not edit real images
-(Batch processing has limitations; this is part of the experiment)
-
-📌 Objective
-
-To demonstrate the capabilities of using only .bat files and to serve as a foundation for more advanced projects or conversions to .exe files.
-
-⚠️ Notice
-
-This project is not affiliated with or related to AVS4YOU.
-
-The name is used for inspiration only.
+1. Descarga o clona el repositorio:
+   ```bash
+   git clone https://github.com/tuusuario/avs-paint-editor-unofficial.git

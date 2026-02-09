@@ -3,38 +3,41 @@ title AVS Paint Editor (Unofficial) - Launcher
 color 0A
 
 cls
+echo ====================================
+echo AVS PAINT EDITOR (UNOFFICIAL)
 echo =====================================
-echo     AVS PAINT EDITOR (UNOFFICIAL)
-echo =====================================
 echo.
-echo Proyecto educativo en Batch (.bat)
+echo Educational Batch Project (.bat)
 echo.
-echo 1. Iniciar Editor
-echo 2. Ver Advertencia
-echo 3. Salir
+echo 1. Start Editor
+echo 2. View Warning
+echo 3. Exit
 echo.
-set /p op=Selecciona una opcion: 
+set /p op=Select an option:
 
-if "%op%"=="1" goto iniciar
-if "%op%"=="2" goto advertencia
+if "%op%"=="1" goto start
+if "%op%"=="2" goto warning
 if "%op%"=="3" exit
 
 goto menu
 
-:iniciar
+:start
 cls
-echo Iniciando AVS Paint Editor...
+echo Starting AVS Paint Editor...
 timeout /t 2 >nul
 call avs_paint_editor.bat
 exit
 
-:advertencia
+:warning
 cls
-echo ⚠️ ADVERTENCIA
+echo ⚠️ WARNING
 echo.
-echo Este proyecto es NO OFICIAL.
-echo No esta afiliado a AVS4YOU.
-echo El nombre AVS se usa solo como inspiracion.
+echo This project is UNOFFICIAL.
+
+echo It is not affiliated with AVS4YOU.
+
+echo The name AVS is used only for inspiration.
+
 echo.
 pause
 goto menu

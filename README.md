@@ -39,6 +39,7 @@ The author is not responsible for any third-party use of the software.
 
 If you own a trademark mentioned and believe this project infringes on any rights, please open an issue so we can discuss and resolve it amicably.
 
+
 ##License and Usage
 
 AVS Paint Editor (Unofficial) is free for everyone.

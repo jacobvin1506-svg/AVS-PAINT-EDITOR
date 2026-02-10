@@ -1,17 +1,3 @@
-## ⚠️ Important Notice Regarding .BAT Files
-
-Within **3 hours**, I (the creator) will **remove the `.BAT` file from AVS Paint Editor**.
-
-- This means that the editor version that relies on the `.BAT` file for activation or older features will **no longer be available**.
-
-- The full HTML5 version (7.1.1) will **continue to function normally** and is the recommended version to use.
-
-- This action is **only to clean up older versions and avoid confusion**.
-
-💡 Recommendation: Download and use the **HTML5 version** (`index.html`) before the `.BAT` file is removed.
-
----
-
 # 🎨 AVS Paint Editor (Unofficial)
 
 AVS Paint Editor (Unofficial) is an experimental project created as a **Batch (.bat)** application for Windows.

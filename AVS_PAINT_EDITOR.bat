@@ -33,7 +33,7 @@ echo Activation successful!
 timeout /t 1 >nul
 
 :: ===============================
-:: LAUNCHER
+:: MENU PRINCIPAL
 :: ===============================
 :MENU
 cls
@@ -41,7 +41,7 @@ echo =====================================
 echo    AVS PAINT EDITOR (UNOFFICIAL)
 echo =====================================
 echo.
-echo 1. New drawing
+echo 1. Nuevo dibujo
 echo 2. About
 echo 3. Exit
 echo.
@@ -53,7 +53,7 @@ if "%CHOICE%"=="3" exit
 goto MENU
 
 :: ===============================
-:: DIBUJO BASICO (SIMULADO)
+:: NUEVO DIBUJO EN TEXTO
 :: ===============================
 :DRAW
 cls
@@ -62,7 +62,7 @@ echo   AVS PAINT EDITOR - TEXT DRAWING
 echo ===============================
 echo.
 
-:: Crear un lienzo de 10 filas x 30 columnas con espacios
+:: Crear un lienzo de 10 filas x 30 columnas usando puntos
 for /L %%Y in (1,1,10) do (
     for /L %%X in (1,1,30) do (
         set /p=·<nul
@@ -72,14 +72,8 @@ for /L %%Y in (1,1,10) do (
 
 echo.
 echo Este es tu lienzo de texto (simulado).
-echo Puedes "dibujar" imaginando los puntos.
+echo Imagina dibujar usando los puntos.
 echo Presiona cualquier tecla para regresar al menu.
-pause
-goto MENU
-
-echo.
-echo This is your new drawing canvas (demo).
-echo Press any key to return to menu.
 pause
 goto MENU
 
@@ -93,7 +87,7 @@ echo   ABOUT
 echo ===============================
 echo.
 echo Name: AVS Paint Editor
-echo Version: 1.0 BASIC
+echo Version: 1.0 TEXT DEMO
 echo Type: UNOFFICIAL
 echo Language: EN / ES
 echo License: FREE

@@ -1,28 +1,20 @@
-@echo off
-title AVS Paint Editor - Code Generator
-color 0A
-
+:: ===== ACTIVACION (CORREGIDA) =====
 cls
 echo =====================================
 echo   AVS PAINT EDITOR (UNOFFICIAL)
-echo     ACTIVATION CODE GENERATOR
 echo =====================================
 echo.
+set /p USER_CODE=Enter activation code: 
 
-:: Generar codigo simple con fecha
-set /a RAND=%RANDOM% %% 9000 + 1000
-set CODE=AVS-PAINT-%RAND%
-
-echo Generated activation code:
-echo.
-echo   %CODE%
-echo.
-echo This code is FREE and symbolic.
-echo.
-
-:: Guardar en archivo
-echo %CODE% > activation_code.txt
-echo Code saved as activation_code.txt
+echo %USER_CODE% | findstr /B "AVS-PAINT-" >nul
+if errorlevel 1 (
+    echo.
+    echo Invalid activation code.
+    echo This software is FREE.
+    pause
+    exit
+)
 
 echo.
-pause
+echo Activation successful!
+timeout /t 1 >nul

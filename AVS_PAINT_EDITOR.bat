@@ -58,16 +58,21 @@ goto MENU
 :DRAW
 cls
 echo ===============================
-echo   AVS PAINT EDITOR
+echo   AVS PAINT EDITOR - NEW DRAWING
 echo ===============================
 echo.
-echo Drawing tools:
-echo - Pencil
-echo - Brush
-echo - Eraser
+
+:: Simular un lienzo con puntos
+for /L %%Y in (1,1,10) do (
+    for /L %%X in (1,1,30) do (
+        set /p=.“<nul
+    )
+    echo.
+)
+
 echo.
-echo (This is a BASIC demo version)
-echo.
+echo This is your new drawing canvas (demo).
+echo Press any key to return to menu.
 pause
 goto MENU
 

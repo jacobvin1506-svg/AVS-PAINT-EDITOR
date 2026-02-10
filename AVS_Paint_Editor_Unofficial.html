@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>AVS Paint Editor - Unofficial</title>
+<title>AVS Paint Editor (Unofficial)</title>
 <style>
     body {
         font-family: monospace;
@@ -12,6 +12,11 @@
         flex-direction: column;
         align-items: center;
         padding: 20px;
+    }
+    #titulo {
+        white-space: pre;
+        text-align: center;
+        margin-bottom: 20px;
     }
     #output {
         white-space: pre;
@@ -24,27 +29,42 @@
         font-size: 16px;
         cursor: pointer;
     }
+    input {
+        font-size: 16px;
+        padding: 5px;
+    }
     #menu, #canvas, #about {
         display: none;
         text-align: center;
+    }
+    pre.tip {
+        color: yellow;
+        font-size: 14px;
     }
 </style>
 </head>
 <body>
 
-<h1>AVS Paint Editor - Unofficial</h1>
+<pre id="titulo">
+=====================================
+   AVS PAINT EDITOR (UNOFFICIAL)
+=====================================
+</pre>
 
+<!-- ACTIVATION -->
 <div id="activation">
     <p>This software is FREE for everyone.</p>
     <p>Enter activation code to continue:</p>
     <input type="text" id="userCode" placeholder="AVS-PAINT-1234">
     <button onclick="activar()">Activate</button>
-    <p id="error" style="color:red;"></p>
-    <p style="color:yellow; font-size:14px;">
-        Tip: In the original .bat, the activation code had to start with <strong>AVS-PAINT-</strong> followed by numbers, e.g., <em>AVS-PAINT-1234</em>.
-    </p>
+    <pre id="error" style="color:red;"></pre>
+    <pre class="tip">
+Tip: The activation code must start with AVS-PAINT- followed by numbers.
+Example: AVS-PAINT-1234
+    </pre>
 </div>
 
+<!-- MENU -->
 <div id="menu">
     <p>=====================================</p>
     <p>AVS PAINT EDITOR (UNOFFICIAL)</p>
@@ -54,12 +74,14 @@
     <button onclick="salir()">3. Exit</button>
 </div>
 
+<!-- CANVAS -->
 <div id="canvas">
     <pre id="lienzo"></pre>
     <button onclick="nuevoDibujo()">Nuevo dibujo</button>
     <button onclick="mostrarMenu()">Volver al menu</button>
 </div>
 
+<!-- ABOUT -->
 <div id="about">
     <p>=====================================</p>
     <p>ABOUT</p>
@@ -77,6 +99,8 @@
 const filas = 10;
 const columnas = 30;
 const lienzoDiv = document.getElementById('lienzo');
+const titulo = document.getElementById('titulo');
+const errorDiv = document.getElementById('error');
 
 function generarLienzo() {
     let lienzo = '';
@@ -99,8 +123,10 @@ function activar() {
     if(code.startsWith("AVS-PAINT-")) {
         document.getElementById('activation').style.display = 'none';
         document.getElementById('menu').style.display = 'block';
+        errorDiv.textContent = "";
+        titulo.textContent = "=====================================\n   AVS PAINT EDITOR (UNOFFICIAL)\n=====================================";
     } else {
-        document.getElementById('error').textContent = "Invalid activation code. Example: AVS-PAINT-1234";
+        errorDiv.textContent = "Invalid activation code!";
     }
 }
 
@@ -108,18 +134,21 @@ function activar() {
 function mostrarCanvas() {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('canvas').style.display = 'block';
+    titulo.textContent = "==============================\n   AVS PAINT EDITOR - TEXT DRAWING\n==============================";
     nuevoDibujo();
 }
 
 function mostrarAbout() {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('about').style.display = 'block';
+    titulo.textContent = "==============================\n   ABOUT\n==============================";
 }
 
 function mostrarMenu() {
     document.getElementById('canvas').style.display = 'none';
     document.getElementById('about').style.display = 'none';
     document.getElementById('menu').style.display = 'block';
+    titulo.textContent = "=====================================\n   AVS PAINT EDITOR (UNOFFICIAL)\n=====================================";
 }
 
 function salir() {

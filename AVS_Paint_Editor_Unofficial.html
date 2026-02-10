@@ -12,9 +12,13 @@ canvas { border:2px solid #0f0; background-color:#000; cursor:crosshair; }
 input { font-size:16px; padding:5px; margin:3px; }
 pre.tip { color:yellow; font-size:14px; }
 #controls { margin:10px; }
+img#logo { width:150px; margin-bottom:10px; }
 </style>
 </head>
 <body>
+
+<!-- LOGO -->
+<img id="logo" src="logo.png" alt="AVS Paint Editor Logo">
 
 <pre id="titulo">
 =====================================
@@ -34,7 +38,7 @@ pre.tip { color:yellow; font-size:14px; }
 <input type="text" id="userCode" placeholder="AVS-PAINT-1234">
 <button onclick="activar()">Activate</button>
 <pre id="error" style="color:red;"></pre>
-<pre class="tip">Tip: The code must start with AVS-PAINT- followed by numbers. Example: AVS-PAINT-1234</pre>
+<pre class="tip">Tip: The code must start with AVS-PAINT- followed by números. Ejemplo: AVS-PAINT-1234</pre>
 </div>
 
 <!-- MENU -->
@@ -59,10 +63,10 @@ pre.tip { color:yellow; font-size:14px; }
 
 <!-- ABOUT -->
 <div id="about">
-<p>AVS Paint Editor 7.1.1 - Version Mejorada</p>
-<p>Type: UNOFFICIAL</p>
-<p>Language: EN / ES</p>
-<p>License: FREE</p>
+<p>AVS Paint Editor 7.1.1 - Versión Mejorada</p>
+<p>Tipo: UNOFFICIAL</p>
+<p>Idioma: EN / ES</p>
+<p>Licencia: FREE</p>
 <button onclick="mostrarMenu()">Volver al menú</button>
 </div>
 

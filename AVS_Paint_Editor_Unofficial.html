@@ -62,6 +62,29 @@ pre.tip { color:yellow; font-size:14px; }
 </div>
 
 <script>
+// --- Detectar versión de Windows ---
+var ua = navigator.userAgent;
+var mensaje = "";
+var xpCompatible = false;
+
+// Detect Windows NT
+if (ua.indexOf("Windows NT") !== -1) {
+    var ntVersion = parseFloat(ua.split("Windows NT ")[1]);
+    if (ntVersion < 6.0) {
+        // Windows XP o anterior
+        xpCompatible = true;
+        mensaje = "AVS Paint Editor funciona mejor en Windows XP o versiones anteriores.";
+        alert(mensaje);
+    } else {
+        // Vista o superior
+        mensaje = "AVS Paint Editor funciona en Windows Vista y superiores.\nRecibirá todas las futuras actualizaciones HTML5.";
+        // Puedes mostrar un aviso opcional
+        console.log(mensaje);
+    }
+} else {
+    console.log("Sistema no identificado, usar bajo su responsabilidad.");
+}
+
 // --- Variables ---
 var activationDiv = document.getElementById('activation');
 var menuDiv = document.getElementById('menu');
@@ -134,4 +157,3 @@ activationDiv.style.display='block';
 
 </body>
 </html>
-

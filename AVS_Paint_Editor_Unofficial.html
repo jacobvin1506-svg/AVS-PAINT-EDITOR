@@ -7,7 +7,7 @@
 body { font-family: monospace; background-color: #000; color: #0f0; text-align:center; padding:20px; }
 #titulo { white-space: pre; margin-bottom: 20px; }
 button { padding:5px 10px; margin:3px; font-size:14px; cursor:pointer; }
-#menu, #canvasDiv, #about, #activation { display:none; text-align:center; }
+#menu, #canvasDiv, #about, #activation, #warning { display:none; text-align:center; }
 canvas { border:2px solid #0f0; background-color:#000; cursor:crosshair; }
 input { font-size:16px; padding:5px; margin:3px; }
 pre.tip { color:yellow; font-size:14px; }
@@ -21,6 +21,11 @@ pre.tip { color:yellow; font-size:14px; }
    AVS PAINT EDITOR 7.1.1 (UNO)
 =====================================
 </pre>
+
+<!-- WARNING -->
+<div id="warning">
+<p style="color:red; font-size:18px;">⚠️ Lo sentimos, AVS Paint Editor solo se puede usar en Windows ME, 2000 o XP.</p>
+</div>
 
 <!-- ACTIVATION -->
 <div id="activation">
@@ -64,29 +69,27 @@ pre.tip { color:yellow; font-size:14px; }
 <script>
 // --- Detectar versión de Windows ---
 var ua = navigator.userAgent;
-var mensaje = "";
-var antiguoCompatible = false;
+var permitido = false;
 
-// Detect Windows NT o ME/2000
+// Windows NT
 if (ua.indexOf("Windows NT") !== -1) {
     var ntVersion = parseFloat(ua.split("Windows NT ")[1]);
     if (ntVersion < 6.0) {
-        // Windows 2000 / XP o anterior
-        antiguoCompatible = true;
-        mensaje = "⚠️ AVS Paint Editor funciona mejor en Windows ME, 2000 o XP.";
-        alert(mensaje);
-    } else {
-        // Vista o superior
-        mensaje = "ℹ️ AVS Paint Editor funciona en Windows Vista y superiores y recibirá todas las futuras actualizaciones HTML5.";
-        console.log(mensaje);
-    }
-} else if (ua.indexOf("Windows 95") !== -1 || ua.indexOf("Windows ME") !== -1) {
-    // Windows 98 / ME
-    antiguoCompatible = true;
-    mensaje = "⚠️ AVS Paint Editor funciona mejor en Windows ME o Windows 98.";
-    alert(mensaje);
+        // Windows 2000 / XP
+        permitido = true;
+    } 
+} else if (ua.indexOf("Windows ME") !== -1 || ua.indexOf("Windows 98") !== -1) {
+    // Windows ME / 98
+    permitido = true;
+}
+
+// Mostrar warning si no permitido
+if (!permitido) {
+    document.getElementById('warning').style.display = 'block';
+    console.log("AVS Paint Editor solo disponible en Windows ME, 2000 o XP.");
 } else {
-    console.log("Sistema no identificado, usar bajo su responsabilidad.");
+    // Permitir usar editor
+    document.getElementById('activation').style.display = 'block';
 }
 
 // --- Variables ---
@@ -97,8 +100,6 @@ var aboutDiv = document.getElementById('about');
 var canvas = document.getElementById('paintCanvas');
 var ctx = canvas.getContext('2d');
 var dibujando = false;
-var color = document.getElementById('colorPicker').value;
-var grosor = parseInt(document.getElementById('sizePicker').value);
 
 // ---- Activación ----
 function activar() {
@@ -124,8 +125,8 @@ function dibujar(e) {
     var rect = canvas.getBoundingClientRect();
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
-    color = document.getElementById('colorPicker').value;
-    grosor = parseInt(document.getElementById('sizePicker').value);
+    var color = document.getElementById('colorPicker').value;
+    var grosor = parseInt(document.getElementById('sizePicker').value);
     ctx.fillStyle = color;
     ctx.fillRect(x-grosor/2, y-grosor/2, grosor, grosor);
 }
@@ -154,9 +155,6 @@ function mostrarCanvas() { menuDiv.style.display='none'; aboutDiv.style.display=
 function mostrarAbout() { menuDiv.style.display='none'; canvasDiv.style.display='none'; aboutDiv.style.display='block'; }
 function mostrarMenu() { canvasDiv.style.display='none'; aboutDiv.style.display='none'; menuDiv.style.display='block'; }
 function salir() { alert("Gracias por usar AVS Paint Editor 7.1.1!"); }
-
-// Inicialización
-activationDiv.style.display='block';
 </script>
 
 </body>

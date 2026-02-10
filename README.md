@@ -6,6 +6,20 @@ It functions as a basic "Paint" program **from the command line**, using ASCII a
 
 This project is **educational**, lightweight, and requires no installation.
 
+
+## 💻 Compatibility and Support on Windows XP
+
+- AVS Paint Editor 7.1.1 (HTML5) **works on Windows XP** in browsers that support `<canvas>`.
+
+- **There is no official support** for Windows XP or other versions.
+
+- Any technical problems related to XP **will not be resolved by the creator**.
+
+- The application is provided as a **free and educational project** for experimenting and drawing with a mouse.
+
+⚠️ Warning: On **Windows Vista or later versions**, the editor will display a warning message and **its use is not recommended**.
+
+
 ---
 
 ## ✨ Features

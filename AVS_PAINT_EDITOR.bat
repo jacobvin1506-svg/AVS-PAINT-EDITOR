@@ -87,7 +87,7 @@ echo   ABOUT
 echo ===============================
 echo.
 echo Name: AVS Paint Editor
-echo Version: 1.0 TEXT DEMO
+echo Version: 7.1.1 TEXT DEMO
 echo Type: UNOFFICIAL
 echo Language: EN / ES
 echo License: FREE

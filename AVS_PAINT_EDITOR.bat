@@ -1,78 +1,93 @@
 @echo off
 title AVS Paint Editor (Unofficial)
-color 0F
+color 0A
 
-:: ===== ACTIVACION (SIMBOLICA) =====
-set ACTIVATION_CODE=AVS-PAINT-2026
+:: ===============================
+:: AVS PAINT EDITOR - UNOFFICIAL
+:: FREE SOFTWARE
+:: ===============================
 
+:ACTIVATION
 cls
 echo =====================================
-echo   AVS PAINT EDITOR (UNOFFICIAL)
+echo    AVS PAINT EDITOR (UNOFFICIAL)
 echo =====================================
 echo.
-set /p USER_CODE=Enter activation code: 
+echo This software is FREE for everyone.
+echo Enter activation code to continue.
+echo.
+set /p USER_CODE=Activation code: 
 
-if not "%USER_CODE%"=="%ACTIVATION_CODE%" (
+:: ---- VALIDACION FLEXIBLE ----
+echo %USER_CODE% | findstr /B "AVS-PAINT-" >nul
+if errorlevel 1 (
     echo.
     echo Invalid activation code.
-    echo This software is FREE.
+    echo Example: AVS-PAINT-1234
     pause
-    exit
+    goto ACTIVATION
 )
 
-:: ===== MENU PRINCIPAL =====
-:menu
+echo.
+echo Activation successful!
+timeout /t 1 >nul
+
+:: ===============================
+:: LAUNCHER
+:: ===============================
+:MENU
 cls
 echo =====================================
-echo   AVS PAINT EDITOR (UNOFFICIAL)
+echo    AVS PAINT EDITOR (UNOFFICIAL)
 echo =====================================
 echo.
-echo 1. Draw (ASCII)
-echo 2. Change console color
-echo 3. Clear screen
-echo 4. Save drawing
-echo 5. Exit
+echo 1. New drawing
+echo 2. About
+echo 3. Exit
 echo.
-set /p option=Choose an option: 
+set /p CHOICE=Select option: 
 
-if "%option%"=="1" goto draw
-if "%option%"=="2" goto color
-if "%option%"=="3" goto clear
-if "%option%"=="4" goto save
-if "%option%"=="5" exit
+if "%CHOICE%"=="1" goto DRAW
+if "%CHOICE%"=="2" goto ABOUT
+if "%CHOICE%"=="3" exit
+goto MENU
 
-goto menu
-
-:: ===== DIBUJAR =====
-:draw
+:: ===============================
+:: DIBUJO BASICO (SIMULADO)
+:: ===============================
+:DRAW
 cls
-echo Draw using ASCII text
-echo Type FIN to return to menu
+echo ===============================
+echo   AVS PAINT EDITOR
+echo ===============================
 echo.
-:drawloop
-set /p line=
-if "%line%"=="FIN" goto menu
-echo %line%>> drawing.txt
-goto drawloop
-
-:: ===== COLOR =====
-:color
-cls
-echo Console colors:
-echo 0=Black 1=Blue 2=Green 4=Red 7=Gray F=White
-echo Example: 0F
-set /p c=Choose color: 
-color %c%
-goto menu
-
-:: ===== LIMPIAR =====
-:clear
-cls
-goto menu
-
-:: ===== GUARDAR =====
-:save
-cls
-echo Drawing saved as drawing.txt
+echo Drawing tools:
+echo - Pencil
+echo - Brush
+echo - Eraser
+echo.
+echo (This is a BASIC demo version)
+echo.
 pause
-goto menu
+goto MENU
+
+:: ===============================
+:: ABOUT
+:: ===============================
+:ABOUT
+cls
+echo ===============================
+echo   ABOUT
+echo ===============================
+echo.
+echo Name: AVS Paint Editor
+echo Version: 1.0 BASIC
+echo Type: UNOFFICIAL
+echo Language: EN / ES
+echo License: FREE
+echo.
+echo This project is not affiliated
+echo with the original AVS software.
+echo.
+pause
+goto MENU

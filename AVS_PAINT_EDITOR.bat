@@ -58,17 +58,24 @@ goto MENU
 :DRAW
 cls
 echo ===============================
-echo   AVS PAINT EDITOR - NEW DRAWING
+echo   AVS PAINT EDITOR - TEXT DRAWING
 echo ===============================
 echo.
 
-:: Simular un lienzo con puntos
+:: Crear un lienzo de 10 filas x 30 columnas con espacios
 for /L %%Y in (1,1,10) do (
     for /L %%X in (1,1,30) do (
-        set /p=.“<nul
+        set /p=·<nul
     )
     echo.
 )
+
+echo.
+echo Este es tu lienzo de texto (simulado).
+echo Puedes "dibujar" imaginando los puntos.
+echo Presiona cualquier tecla para regresar al menu.
+pause
+goto MENU
 
 echo.
 echo This is your new drawing canvas (demo).

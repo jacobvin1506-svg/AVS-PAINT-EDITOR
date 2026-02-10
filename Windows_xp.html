@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>AVS Paint Editor (Unofficial)</title>
+<style>
+body { font-family: monospace; background-color: #000; color: #0f0; text-align:center; padding:20px; }
+#titulo { white-space: pre; margin-bottom: 20px; }
+button { padding:5px 10px; margin:3px; font-size:14px; cursor:pointer; }
+#menu, #canvasDiv, #about, #activation { display:none; text-align:center; }
+canvas { border:2px solid #0f0; background-color:#000; cursor:crosshair; }
+input { font-size:16px; padding:5px; }
+pre.tip { color:yellow; font-size:14px; }
+</style>
+<!--[if lt IE 9]>
+<script src="excanvas.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<pre id="titulo">
+=====================================
+   AVS PAINT EDITOR (UNOFFICIAL)
+=====================================
+</pre>
+
+<!-- ACTIVATION -->
+<div id="activation">
+<p>This software is FREE for everyone.</p>
+<p>Enter activation code:</p>
+<input type="text" id="userCode" placeholder="AVS-PAINT-1234">
+<button onclick="activar()">Activate</button>
+<pre id="error" style="color:red;"></pre>
+<pre class="tip">Tip: The code must start with AVS-PAINT- followed by numbers. Example: AVS-PAINT-1234</pre>
+</div>
+
+<!-- MENU -->
+<div id="menu">
+<button onclick="mostrarCanvas()">1. Nuevo dibujo</button>
+<button onclick="mostrarAbout()">2. About</button>
+<button onclick="salir()">3. Exit</button>
+</div>
+
+<!-- CANVAS -->
+<div id="canvasDiv">
+<canvas id="paintCanvas" width="600" height="400"></canvas>
+<br>
+<button onclick="limpiarCanvas()">Nuevo dibujo</button>
+<button onclick="mostrarMenu()">Volver al menu</button>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+<p>AVS Paint Editor - Version 1.0</p>
+<p>Type: UNOFFICIAL</p>
+<p>Language: EN / ES</p>
+<p>License: FREE</p>
+<button onclick="mostrarMenu()">Volver al menu</button>
+</div>
+
+<script>
+// --- Mensaje de advertencia para Vista y superiores ---
+var ua = navigator.userAgent;
+var bloqueado = false;
+
+if (ua.indexOf("Windows NT") !== -1) {
+    var ntVersion = parseFloat(ua.split("Windows NT ")[1]);
+    if (ntVersion >= 6.0) { // Vista = 6.0, 7 = 6.1, 8=6.2, 10=10
+        bloqueado = true;
+    }
+}
+
+if (bloqueado) {
+    alert("No puede usar AVS PAINT EDITOR en Windows Vista o posteriores.\nEs solo para Windows XP o anterior.");
+    document.body.innerHTML = "<h2 style='color:red; font-family:monospace; text-align:center;'>AVS PAINT EDITOR solo funciona en Windows XP o anterior.</h2>";
+}
+
+// --- Variables ---
+var activationDiv = document.getElementById('activation');
+var menuDiv = document.getElementById('menu');
+var canvasDiv = document.getElementById('canvasDiv');
+var aboutDiv = document.getElementById('about');
+var canvas = document.getElementById('paintCanvas');
+var ctx = canvas.getContext('2d');
+var dibujando = false;
+
+// ---- Activación ----
+function activar() {
+    var code = document.getElementById('userCode').value;
+    var errorDiv = document.getElementById('error');
+    if (code.indexOf("AVS-PAINT-") === 0) {
+        activationDiv.style.display = 'none';
+        menuDiv.style.display = 'block';
+        errorDiv.innerHTML = "";
+    } else {
+        errorDiv.innerHTML = "Invalid activation code!";
+    }
+}
+
+// ---- Dibujo ----
+canvas.onmousedown = function(e){ dibujando=true; dibujar(e); };
+canvas.onmouseup = function(){ dibujando=false; };
+canvas.onmouseleave = function(){ dibujando=false; };
+canvas.onmousemove = dibujar;
+
+function dibujar(e) {
+    if (!dibujando) return;
+    var rect = canvas.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    ctx.fillStyle = "#0f0";
+    ctx.fillRect(x-2, y-2, 4, 4);
+}
+
+function limpiarCanvas() {
+    ctx.fillStyle="#000";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+// ---- Menú ----
+function mostrarCanvas() { menuDiv.style.display='none'; aboutDiv.style.display='none'; canvasDiv.style.display='block'; limpiarCanvas(); }
+function mostrarAbout() { menuDiv.style.display='none'; canvasDiv.style.display='none'; aboutDiv.style.display='block'; }
+function mostrarMenu() { canvasDiv.style.display='none'; aboutDiv.style.display='none'; menuDiv.style.display='block'; }
+function salir() { alert("Gracias por usar AVS Paint Editor!"); window.close(); }
+
+// Inicialización
+activationDiv.style.display='block';
+</script>
+
+</body>
+</html>

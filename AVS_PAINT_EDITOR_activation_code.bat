@@ -4,16 +4,13 @@ echo ========================================
 echo AVS PAINT EDITOR (UNOFFICIAL)
 echo ========================================
 echo.
-set /p USER_CODE=Enter activation code:
-
-echo %USER_CODE% | findstr /B "AVS-PAINT-" >nul
-if errorlevel 1 ( 
-echo. 
-echo Invalid activation code. 
-echo This software is FREE. 
-pause 
+set "ACTIVATION_CODE=AVS-PAINT-2026"
+set /p USER_CODE=Enter activation code: 
+if /I "%USER_CODE%"=="%ACTIVATION_CODE%" goto ok
+echo Invalid activation code
+pause
 exit
-)
+:ok
 
 echo.
 echo Activation successful!

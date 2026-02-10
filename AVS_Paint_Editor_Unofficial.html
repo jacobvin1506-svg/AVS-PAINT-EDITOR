@@ -4,43 +4,44 @@
 <meta charset="UTF-8">
 <title>AVS Paint Editor (Unofficial)</title>
 <style>
-    body {
-        font-family: monospace;
-        background-color: #000;
-        color: #0f0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-    #titulo {
-        white-space: pre;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    #output {
-        white-space: pre;
-        line-height: 1.2;
-        margin: 20px 0;
-    }
-    button {
-        padding: 10px 20px;
-        margin: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    input {
-        font-size: 16px;
-        padding: 5px;
-    }
-    #menu, #canvas, #about {
-        display: none;
-        text-align: center;
-    }
-    pre.tip {
-        color: yellow;
-        font-size: 14px;
-    }
+body {
+    font-family: monospace;
+    background-color: #000;
+    color: #0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+#titulo {
+    white-space: pre;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#menu, #canvas, #about {
+    display: none;
+    text-align: center;
+}
+#grid {
+    display: grid;
+    grid-template-columns: repeat(30, 20px);
+    grid-template-rows: repeat(15, 20px);
+    gap: 1px;
+    margin-bottom: 20px;
+}
+.pixel {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border: 1px solid #0f0;
+    cursor: pointer;
+}
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -51,24 +52,8 @@
 =====================================
 </pre>
 
-<!-- ACTIVATION -->
-<div id="activation">
-    <p>This software is FREE for everyone.</p>
-    <p>Enter activation code to continue:</p>
-    <input type="text" id="userCode" placeholder="AVS-PAINT-1234">
-    <button onclick="activar()">Activate</button>
-    <pre id="error" style="color:red;"></pre>
-    <pre class="tip">
-Tip: The activation code must start with AVS-PAINT- followed by numbers.
-Example: AVS-PAINT-1234
-    </pre>
-</div>
-
 <!-- MENU -->
 <div id="menu">
-    <p>=====================================</p>
-    <p>AVS PAINT EDITOR (UNOFFICIAL)</p>
-    <p>=====================================</p>
     <button onclick="mostrarCanvas()">1. Nuevo dibujo</button>
     <button onclick="mostrarAbout()">2. About</button>
     <button onclick="salir()">3. Exit</button>
@@ -76,66 +61,48 @@ Example: AVS-PAINT-1234
 
 <!-- CANVAS -->
 <div id="canvas">
-    <pre id="lienzo"></pre>
+    <div id="grid"></div>
     <button onclick="nuevoDibujo()">Nuevo dibujo</button>
     <button onclick="mostrarMenu()">Volver al menu</button>
 </div>
 
 <!-- ABOUT -->
 <div id="about">
-    <p>=====================================</p>
-    <p>ABOUT</p>
-    <p>=====================================</p>
-    <p>Name: AVS Paint Editor</p>
-    <p>Version: 1.0 TEXT DEMO</p>
+    <p>AVS Paint Editor - Version 1.0 TEXT DEMO</p>
     <p>Type: UNOFFICIAL</p>
     <p>Language: EN / ES</p>
     <p>License: FREE</p>
-    <p>This project is not affiliated with the original AVS software.</p>
     <button onclick="mostrarMenu()">Volver al menu</button>
 </div>
 
 <script>
-const filas = 10;
+const filas = 15;
 const columnas = 30;
-const lienzoDiv = document.getElementById('lienzo');
+const grid = document.getElementById('grid');
 const titulo = document.getElementById('titulo');
-const errorDiv = document.getElementById('error');
 
-function generarLienzo() {
-    let lienzo = '';
-    for (let y = 0; y < filas; y++) {
-        for (let x = 0; x < columnas; x++) {
-            lienzo += '·';
-        }
-        lienzo += '\n';
+function crearGrid() {
+    grid.innerHTML = '';
+    for (let i = 0; i < filas * columnas; i++) {
+        const pixel = document.createElement('div');
+        pixel.className = 'pixel';
+        pixel.addEventListener('click', () => {
+            pixel.style.backgroundColor = '#0f0'; // Pintar de verde
+        });
+        grid.appendChild(pixel);
     }
-    return lienzo;
 }
 
 function nuevoDibujo() {
-    lienzoDiv.textContent = generarLienzo();
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(p => p.style.backgroundColor = '#000'); // Limpiar
 }
 
-// ---- Activación ----
-function activar() {
-    const code = document.getElementById('userCode').value.trim();
-    if(code.startsWith("AVS-PAINT-")) {
-        document.getElementById('activation').style.display = 'none';
-        document.getElementById('menu').style.display = 'block';
-        errorDiv.textContent = "";
-        titulo.textContent = "=====================================\n   AVS PAINT EDITOR (UNOFFICIAL)\n=====================================";
-    } else {
-        errorDiv.textContent = "Invalid activation code!";
-    }
-}
-
-// ---- Menu ----
 function mostrarCanvas() {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('canvas').style.display = 'block';
-    titulo.textContent = "==============================\n   AVS PAINT EDITOR - TEXT DRAWING\n==============================";
-    nuevoDibujo();
+    titulo.textContent = "==============================\n   AVS PAINT EDITOR - DRAWING\n==============================";
+    crearGrid();
 }
 
 function mostrarAbout() {
@@ -155,6 +122,9 @@ function salir() {
     alert("Gracias por usar AVS Paint Editor!");
     window.close();
 }
+
+// Inicializar menú
+document.getElementById('menu').style.display = 'block';
 </script>
 
 </body>

@@ -22,8 +22,8 @@ This project is **educational**, lightweight, and requires no installation.
 ## 📦 Requirements
 
 - Windows
-- CMD (Command Prompt)
-- No external dependencies required
+- Web browser
+- CMD (only the code)
 
 ## WARNING
 
